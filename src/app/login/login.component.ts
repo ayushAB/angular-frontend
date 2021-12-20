@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   url="//localhost:8000/"
   email:string = ""
   password:string = ""
+  error=""
   constructor(private http: HttpClient,private router: Router) { }
 
     login(){
@@ -29,7 +30,12 @@ export class LoginComponent implements OnInit {
         }).subscribe(data => {
           console.log(data)
           this.router.navigateByUrl('/dashboard');
-        })
+        },
+        error => {
+        console.log('oops', error)
+        this.error = error.error.message
+      }
+        )
 
       });
     }
