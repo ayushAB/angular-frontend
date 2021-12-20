@@ -16,17 +16,11 @@ export class DashboardComponent implements OnInit {
   }
 
   logout(){
-    this.http.get(this.url+"sanctum/csrf-cookie",{
-      withCredentials:true,
-    }).subscribe(()=>{
-      this.http.post<any>(this.url+'api/logout', {
-      },{
-        withCredentials:true
-      }).subscribe(data => {
-        
-      })
-
+    this.http.post<any>(this.url+'api/logout', {
+    },{
+      withCredentials:true
+    }).subscribe(data => {
+      
     });
   }
-
 }
